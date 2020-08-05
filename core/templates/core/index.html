@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% if False %}
+  {% block header %}            
+            <li class="nav-item">
+              <a class="nav-link js-scroll" href="#work">Work</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll" href="#blog">Blog</a>
+            </li>
+  {% endblock header %}
+{% endif %}
+
+
+
+{% block content %}
+  
+  {% include 'core/intro.html' %}
+  
+  <main id="main">
+    {% include 'core/about.html' %}
+
+    {% include 'core/services.html' %}
+
+    {% include 'core/contact.html' %}
+  </main><!-- End #main -->
+
+{% endblock content %}

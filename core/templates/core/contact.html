@@ -1,0 +1,113 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+    <!-- ======= Contact Section ======= -->
+    <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url({% static 'core/img/overlay-bg.jpg)' %}">
+      <div class="overlay-mf"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="contact-mf">
+              <div id="contact" class="box-shadow-full">
+                <div class="row">
+                
+                  <div class="col-md-6">
+                  
+                    <div class="title-box-2">
+                      <h5 class="title-left">
+                        Contacta conmigo
+                      </h5>
+                    </div>
+
+                    <div>
+                      
+                      <a href="#contact"> </a>
+                      <form action="{% url 'index' %}#contact" method="POST" role="form" > 
+                      {% csrf_token %}
+                      
+                        <div class="row">
+                          <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                              {{form.name|as_crispy_field}}
+                            </div>
+                          </div>
+
+                          <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                              {{form.email|as_crispy_field}}
+                            </div>
+                          </div>
+
+                          <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                              {{form.subject|as_crispy_field}}
+                            </div>
+                          </div>
+
+                          <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                              {{form.message|as_crispy_field}}
+                            </div>
+                          </div>
+                        
+                          <div class="col-md-12 text-center mb-3">
+                            {% if messages %}
+                                {% for msg in messages %}
+                                    <div class="alert alert-{{ msg.tags }}">
+                                        {{ msg }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <!--
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                            -->
+                          </div>
+
+                          <div class="col-md-12 text-center">
+                            <button type="submit" class="button button-a button-big button-rouded">Send Message</button>
+                          </div>
+
+                        </div>
+                      </form>
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="title-box-2 pt-4 pt-md-0">
+                    <!--<h5 class="title-left">
+                        Get in Touch
+                      </h5>-->
+                      <br>
+                    </div>
+                    <div class="more-info">
+                      <p class="lead">
+                        Por motivos de seguridad y evitar bots de internet, no hago público mi correo y numero de telefono personal.
+                        Para contactar mandame un mensaje a través del formulario y me pondre en contacto contigo en la mayor brevedad posible.
+                        Muchas gracias por su atención y haber llegado hasta aquí.
+                      </p>
+                      <ul class="list-ico">
+                        <li><span class="ion-ios-location"></span> Benalmádena Costa, Málaga - CP 29630</li>                        
+                      </ul>
+                    </div>
+                    <div class="socials">
+                      <ul>
+                      <!--
+                        <li><a href=""><span class="ico-circle"><i class="ion-social-facebook"></i></span></a></li>
+                        <li><a href=""><span class="ico-circle"><i class="ion-social-instagram"></i></span></a></li>
+                        <li><a href=""><span class="ico-circle"><i class="ion-social-twitter"></i></span></a></li>
+                        <li><a href=""><span class="ico-circle"><i class="ion-social-pinterest"></i></span></a></li>
+                        -->
+                      </ul>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Contact Section -->
