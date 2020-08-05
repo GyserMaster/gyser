@@ -1,5 +1,8 @@
 {% load static %}
 {% load crispy_forms_tags %}
+{% block javascript %}
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+{% endblock javascript %}
 
     <!-- ======= Contact Section ======= -->
     <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url({% static 'core/img/overlay-bg.jpg)' %}">
@@ -24,7 +27,16 @@
                       <a href="#contact"> </a>
                       <form action="{% url 'index' %}#contact" method="POST" role="form" > 
                       {% csrf_token %}
-                      
+                        <div class="col-md-12 text-center mb-3">
+                          {% if messages %}
+                              {% for msg in messages %}
+                                  <div class="alert {{ msg.tags }}">
+                                      {{ msg }}
+                                  </div>
+                              {% endfor %}
+                          {% endif %}                            
+                        </div>
+
                         <div class="row">
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
@@ -48,22 +60,12 @@
                             <div class="form-group">
                               {{form.message|as_crispy_field}}
                             </div>
+                          </div>  
+                                        
+                          <div class="col-md-12 mb-3">                            
+                            <div class="g-recaptcha" data-sitekey="6LdP3roZAAAAAPfQ2Hhs5h24mwxdz2qXRT6brg6q"></div>
                           </div>
-                        
-                          <div class="col-md-12 text-center mb-3">
-                            {% if messages %}
-                                {% for msg in messages %}
-                                    <div class="alert alert-{{ msg.tags }}">
-                                        {{ msg }}
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-                            <!--
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
-                            -->
-                          </div>
+                          
 
                           <div class="col-md-12 text-center">
                             <button type="submit" class="button button-a button-big button-rouded">Send Message</button>
