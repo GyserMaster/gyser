@@ -44,3 +44,7 @@ def index(request):
 
     form = Formulario
     return render(request, "core/index.html", {'form':form})
+
+
+def projects(request):
+    return render(request, "core/projects.html")

@@ -1,0 +1,59 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block navbar %}
+{% endblock navbar %}
+{% if False %}
+  {% block header %}            
+            <li class="nav-item">
+              <a class="nav-link js-scroll" href="#work">Work</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll" href="#blog">Blog</a>
+            </li>
+  {% endblock header %}
+{% endif %}
+
+
+
+{% block content %}
+    <!-- ======= Projects Section ======= -->
+    <section id="service" class="services-mf pt-5 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-box text-center">
+              <h3 class="title-a">
+                Proyectos
+              </h3>
+              <p class="subtitle-a">
+                Aquí presento lo que puedo ofrecer, así como el apartado de proyectos que tengo actualmente en curso.
+              </p>
+              <div class="line-mf"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-4">
+            <a href="https://blog.gyser.es">
+                <div class="service-box">
+                <div class="service-ico">
+                    <span class="ico-circle"><i class="ion-code-working"></i></span>
+                </div>
+                <div class="service-content">
+                    <h2 class="s-title">Blog</h2>
+                    <p class="s-description text-center">
+                    Blog simple con registro de usuario, recuperación de contraseña por correo, creación de posts, paginación django (sin API Rest)...
+                    </p>
+                </div>
+                </div>
+            </a>
+            </div>
+        
+
+        </div>
+      </div>
+    </section><!-- End Services Section -->
+
+{% endblock content %}
