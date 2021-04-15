@@ -12,9 +12,9 @@ import json
 def index(request):
     
     if request.method == "POST":
-        form = Formulario(request.POST)
+        myform = Formulario(request.POST)
 
-        if form.is_valid():
+        if myform.is_valid():
 
             recaptcha_response = request.POST.get('g-recaptcha-response')
             url = "https://www.google.com/recaptcha/api/siteverify"
@@ -23,10 +23,10 @@ def index(request):
                 'response': recaptcha_response
             }
 
-            subject = form.cleaned_data.get('subject')
-            name = form.cleaned_data.get("name")
-            email = form.cleaned_data.get("email")        
-            message = form.cleaned_data.get("message")
+            subject = myform.cleaned_data.get('subject')
+            name = myform.cleaned_data.get("name")
+            email = myform.cleaned_data.get("email")
+            message = myform.cleaned_data.get("message")
 
             data = urllib.parse.urlencode(values).encode()
             req = urllib.request.Request(url, data=data)
@@ -42,8 +42,8 @@ def index(request):
         
             return redirect("index")
 
-    form = Formulario
-    return render(request, "core/index.html", {'form':form})
+    myform = Formulario
+    return render(request, "core/index.html", {'form':myform})
 
 
 def projects(request):

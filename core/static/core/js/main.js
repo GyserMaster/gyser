@@ -153,4 +153,104 @@
     });
   });
 
+  // Services
+  var botontecnico = $("#botonTecnico");
+  var botonWeb = $("#botonWeb");
+  var botonProyects = $("#botonProyects");
+  var caja1 = $("#caja1");
+  var caja2 = $("#caja2");
+  var caja3 = $("#caja3");
+  var caja11 = $("#caja11");
+  var caja22 = $("#caja22");
+  var caja33 = $("#caja33");
+  caja1.hide();
+  caja2.hide();
+  caja3.hide();
+  caja11.hide();
+  caja22.hide();
+  caja33.hide();
+
+  if ($(window).width() < 767) {
+    botontecnico.find(".service-box").css("background", "rgba(0, 123, 255, 0.1)");
+    botontecnico.find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 123, 255, 1)");
+    caja11.slideDown("fast"); 
+    botontecnico.click(function (e) {
+      e.preventDefault();
+      $(this).find(".service-box").css("background", "rgba(0, 123, 255, 0.1)");
+      $(this).find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 123, 255, 1)");
+      botonWeb.find(".service-box").css("background", "rgba(0, 0, 0, 0)");
+      botonWeb.find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 0, 0, 0.1)");
+      botonProyects.find(".service-box").css("background", "rgba(0, 0, 0, 0)");
+      botonProyects.find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 0, 0, 0.1)");
+      caja11.slideDown("fast");  //fadeToggle()   slideToggle()   slideUp()   slideDown
+      caja22.hide();
+      caja33.hide();
+    });
+    botonWeb.click(function (e) {
+      e.preventDefault();
+      $(this).find(".service-box").css("background", "rgba(0, 123, 255, 0.1)");
+      $(this).find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 123, 255, 1)");
+      botontecnico.find(".service-box").css("background", "rgba(0, 0, 0, 0)");
+      botontecnico.find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 0, 0, 0.1)");
+      botonProyects.find(".service-box").css("background", "rgba(0, 0, 0, 0)");
+      botonProyects.find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 0, 0, 0.1)");
+      caja22.slideDown("fast");  //fadeToggle()   slideToggle()   slideUp()   slideDown
+      caja11.hide();
+      caja33.hide();
+    });
+    botonProyects.click(function (e) {
+      e.preventDefault();
+      $(this).find(".service-box").css("background", "rgba(0, 123, 255, 0.1)");
+      $(this).find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 123, 255, 1)");
+      botontecnico.find(".service-box").css("background", "rgba(0, 0, 0, 0)");
+      botontecnico.find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 0, 0, 0.1)");
+      botonWeb.find(".service-box").css("background", "rgba(0, 0, 0, 0)");
+      botonWeb.find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 0, 0, 0.1)");
+      caja33.slideDown("fast");  //fadeToggle()   slideToggle()   slideUp()   slideDown
+      caja22.hide();
+      caja11.hide();
+    });
+
+  } else {
+    botontecnico.find(".service-box").css("background", "rgba(0, 123, 255, 0.1)");
+    botontecnico.find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 123, 255, 1)");
+    caja1.slideDown("fast"); 
+    botontecnico.click(function (e) {
+      e.preventDefault();
+      $(this).find(".service-box").css("background", "rgba(0, 123, 255, 0.1)");
+      $(this).find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 123, 255, 1)");
+      botonWeb.find(".service-box").css("background", "rgba(0, 0, 0, 0)");
+      botonWeb.find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 0, 0, 0.1)");
+      botonProyects.find(".service-box").css("background", "rgba(0, 0, 0, 0)");
+      botonProyects.find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 0, 0, 0.1)");
+      caja1.slideDown("slow");  //fadeToggle()   slideToggle()   slideUp()   slideDown
+      caja2.hide();
+      caja3.hide();
+    });
+    botonWeb.click(function (e) {
+      e.preventDefault();
+      $(this).find(".service-box").css("background", "rgba(0, 123, 255, 0.1)");
+      $(this).find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 123, 255, 1)");
+      botontecnico.find(".service-box").css("background", "rgba(0, 0, 0, 0)");
+      botontecnico.find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 0, 0, 0.1)");
+      botonProyects.find(".service-box").css("background", "rgba(0, 0, 0, 0)");
+      botonProyects.find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 0, 0, 0.1)");
+      caja2.slideDown("slow");  //fadeToggle()   slideToggle()   slideUp()   slideDown
+      caja1.hide();
+      caja3.hide();
+    });
+    botonProyects.click(function (e) {
+      e.preventDefault();
+      $(this).find(".service-box").css("background", "rgba(0, 123, 255, 0.1)");
+      $(this).find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 123, 255, 1)");
+      botontecnico.find(".service-box").css("background", "rgba(0, 0, 0, 0)");
+      botontecnico.find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 0, 0, 0.1)");
+      botonWeb.find(".service-box").css("background", "rgba(0, 0, 0, 0)");
+      botonWeb.find(".service-box").css("box-shadow", "0 13px 8px -10px rgba(0, 0, 0, 0.1)");
+      caja3.slideDown("slow");  //fadeToggle()   slideToggle()   slideUp()   slideDown
+      caja2.hide();
+      caja1.hide();
+    });
+  }
+
 })(jQuery);

@@ -113,6 +113,17 @@ a:hover {
   height: 100%;
   display: table;
 }
+table, tbody, tr, td{
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+#services-it, #services-webdev, #services-projects {
+  font-size: 25px;
+}
+
+#home {
+  height: 400px;
+}
 
 .table-cell {
   display: table-cell;

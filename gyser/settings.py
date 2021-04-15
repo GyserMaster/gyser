@@ -41,6 +41,8 @@ ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     "core",
+    "blog",
+    'portfolio',
     "crispy_forms",
     'django.contrib.admin',
     'django.contrib.auth',
@@ -147,7 +149,7 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "gyser.django@gmail.com " #os.environ.get(EMAIL_USER)
-EMAIL_HOST_PASSWORD = "Hel@d0CacAhuEte!" #os.environ.get(EMAIL_PASSWORD)
+EMAIL_HOST_PASSWORD = "xhsefzlidiedacea" #os.environ.get(EMAIL_PASSWORD)
 
 
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LdP3roZAAAAAKF-AnJ5QUKugJs2jA1XpnkD6GU9'

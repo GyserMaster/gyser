@@ -1,69 +1,89 @@
 {% load static %}
-    <!-- ======= Services Section ======= -->
-    <section id="service" class="services-mf pt-5 route">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="title-box text-center">
-              <h3 class="title-a">
-                Servicios
-              </h3>
-              <p class="subtitle-a">
-                Aquí presento lo que puedo ofrecer, así como el apartado de proyectos que tengo actualmente en curso.
-              </p>
-              <div class="line-mf"></div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-
-          <div class="col-md-4">
-            <div class="service-box">
-              <div class="service-ico">
-                <span class="ico-circle"><i class="ion-monitor"></i></span>
-              </div>
-              <div class="service-content">
-                <h2 class="s-title">Asistencia Técnica</h2>
-                <p class="s-description text-center">
-                  Se cubren las necesidades de montaje, reparación, software, presupuestos para equipo informático a medida, 
-                  asistiendo para PYMES como
-                  particulares, para oficina y Gaming.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="service-box">
-              <div class="service-ico">
-                <span class="ico-circle"><i class="ion-code-working"></i></span>
-              </div>
-              <div class="service-content">
-                <h2 class="s-title">Desarrollo Web</h2>
-                <p class="s-description text-center">
-                  Si necesitas una imagen de empresa o simplemente algo personal, pideme presupuesto sin compromiso.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <a href="{% url 'projects' %}">
-            <div class="service-box">
-              <div class="service-ico">
-                <span class="ico-circle"><i class="ion-code-working"></i></span>
-              </div>
-              <div class="service-content">
-                <h2 class="s-title">Proyectos</h2>
-                <p class="s-description text-center">
-                  Entra aquí para ver mis proyectos en curso.
-                </p>
-              </div>
-            </div>
-          </a>
-          </div>
-        
-
+<!-- ======= Services Section ======= -->
+<section id="service" class="services-mf pt-5 route">
+  <div class="container">
+    <!--
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="title-box text-center">
+          <h3 class="title-a">
+            Servicios
+          </h3>
+          <p class="subtitle-a">
+            Aquí presento lo que puedo ofrecer, así como el apartado de proyectos que tengo actualmente en curso.
+          </p>
+          <div class="line-mf"></div>
         </div>
       </div>
-    </section><!-- End Services Section -->
+    </div>
+    -->
+    <!-- BOTONES DE SERVICIOS-->
+    <div class="row">
+
+      <div id="botonTecnico" class="col-md-4">
+        <a href="">
+          <div class="service-box">
+            <div class="service-ico">
+              <span class="ico-circle">
+                <img src="{% static 'core/img/service-technic.png' %}" class="img-fluid rounded b-shadow-a" alt=""
+                  width=50% height=50%>
+              </span>
+            </div>
+            <div class="service-content">
+              <h2 class="s-title">Asistencia Técnica</h2>
+              <p class="s-description text-center"></p>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% include 'core/services-it.html' with idservice="caja11" %}
+
+      <div id="botonWeb" class="col-md-4">
+        <a href="">
+          <div class="service-box">
+            <div class="service-ico">
+              <span class="ico-circle"><i class="ion-code-working"></i>
+                <img src="{% static 'core/img/service-web.png' %}" class="img-fluid rounded b-shadow-a" alt="" width=50%
+                  height=50%>
+              </span>
+            </div>
+            <div class="service-content">
+              <h2 class="s-title">Desarrollo Web</h2>
+              <p class="s-description text-center"></p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      {% include 'core/services-it.html' with idservice="caja22" %}
+
+      <div id="botonProyects" class="col-md-4">
+        <a href="">
+          <div class="service-box">
+            <div class="service-ico">
+              <span class="ico-circle"><i class="ion-code-working"></i>
+                <img src="{% static 'core/img/service-gear.png' %}" class="img-fluid rounded b-shadow-a" alt=""
+                  width=50% height=50%>
+              </span>
+            </div>
+            <div class="service-content">
+              <h2 class="s-title">Proyectos</h2>
+              <p class="s-description text-center"></p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      {% include 'core/services-it.html' with idservice="caja33" %}
+
+    </div>
+
+    <!-- CAJAS DE LOS BOTONES DE SERVICIO-->
+    <div>
+      {% include 'core/services-it.html' with idservice="caja1" %}
+      {% include 'core/services-webdev.html' with idservice="caja2" %}
+      {% include 'core/services-projects.html' with idservice="caja3" %}
+    </div>
+
+  </div>
+</section><!-- End Services Section-->
