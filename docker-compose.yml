@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  # DB_HOST=db se encuentra en .env y en settings.py en DATABASES apunta al HOST
+  db:
+    image: postgres:13.1
+    env_file: .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  django_app:
+    build: .
+    env_file: .env
+    environment: 
+      - GUNICORN_PORT=8000
+    expose:
+      - 8000
+    volumes: 
+      - .:/code
+      - static:/code/static/static
+      - media:/code/static/media
+    depends_on: 
+      - db
+
+  nginx:
+    image: nginx:1.13
+    ports: 
+      - 80:80
+      - 443:443
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d:rw
+      - static:/code/static/static
+      - media:/code/static/media
+    depends_on: 
+      - django_app
+
+volumes:
+  postgres_data:
+  static:
+  media:

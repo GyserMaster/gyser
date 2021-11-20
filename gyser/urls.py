@@ -14,14 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from core import views as core_views
+from django.contrib.auth import views as auth_views
+from django.urls import path, include
 from portfolio import views as portfolio_views
-from blog.urls import urlblog
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', core_views.index, name="index"),
-    path('portfolio/', portfolio_views.portfolio, name="portfolio"),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('', portfolio_views.portfolio, name="portfolio"),
+    path('', include('blog.urls')),
+    path('', include('users.urls')),
 ]
-urlpatterns += urlblog
+
+# Serving files uploaded by a user during development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
