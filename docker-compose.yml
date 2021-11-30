@@ -4,12 +4,14 @@ services:
   # DB_HOST=db se encuentra en .env y en settings.py en DATABASES apunta al HOST
   db:
     image: postgres:13.1
+    container_name: "db"
     env_file: .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
   django_app:
     build: .
+    container_name: "django_app"
     env_file: .env
     environment: 
       - GUNICORN_PORT=8000
@@ -22,8 +24,24 @@ services:
     depends_on: 
       - db
 
+  django_app_2:
+    build: .
+    container_name: "django_app_2"
+    env_file: .env
+    environment: 
+      - GUNICORN_PORT=8001
+    expose:
+      - 8001
+    volumes: 
+      - .:/code
+      - static:/code/static/static
+      - media:/code/static/media
+    depends_on: 
+      - db
+
   nginx:
     image: nginx:1.13
+    container_name: "nginx-django"
     ports: 
       - 80:80
       - 443:443

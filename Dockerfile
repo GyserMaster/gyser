@@ -17,7 +17,4 @@ RUN python -m pip install gunicorn
 RUN python -m pip install requests
 RUN python -m pip install simplejson
 
-#RUN useradd -m newuser
-#USER newuser
-
 ENTRYPOINT [ "bash","-c", "/entrypoint.sh" ]
