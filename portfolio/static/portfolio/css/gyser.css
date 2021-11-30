@@ -1,0 +1,72 @@
+
+
+#container {
+    border: 1px solid black;
+}
+#menu {
+    padding: 0px;
+    background: crimson;
+}
+#container nav{
+    font-size: 25px;
+}
+#about{
+    background: rgb(172, 183, 199) !important;
+}
+
+#about figure img{
+    float: left;
+    padding-top: 10px;
+    margin-right: 15px;
+    width: 170px;
+    height: 250px;
+}
+#about figure p{
+    font-size: 25px !important;
+}
+#about-others{
+    margin-top: 50px ;
+}
+#about-others ul li{
+    list-style-type: none;
+    float: left;
+    margin-right: 40px;
+    margin-bottom: 30px;
+}#about-others ul li img{
+    width: 40px;
+    height: 40px;
+}
+.card-header ul li a{
+    font-size: x-large;
+}
+
+table, tbody, tr, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+#services-it, #services-webdev, #services-projects {
+    font-size: 25px;
+    background-color: rgb(216, 218, 223);
+}
+#services-it{
+    text-align: left;
+    padding: 10px;
+}
+#services-it table{
+    text-align: center;
+    margin: 0px auto;
+}
+
+#services-nav .nav-item .active{
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    background-color: rgb(216, 218, 223);
+}
+#contact{
+    background-color: rgb(185, 196, 231);
+}
+#social-links li{
+    float: left;
+    list-style: none;
+    margin-bottom: 15px;
+}

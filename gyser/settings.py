@@ -29,25 +29,33 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@9p#yxdkr#w-=uz#f6uycyo0rg#9efb%w#67hr+&syx@5$)o&x'
+SECRET_KEY = os.environ.get("SECRET_KEY", "changeme")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(os.environ.get("DEBUG", 1)))
 
-ALLOWED_HOSTS = ["*"]
-
+ALLOWED_HOSTS = []
+ALLOWED_HOSTS_ENV = os.environ.get("ALLOWED_HOSTS", "*")
+if ALLOWED_HOSTS_ENV:
+    ALLOWED_HOSTS.extend(ALLOWED_HOSTS_ENV.split(','))
 
 # Application definition
 
 INSTALLED_APPS = [
-    "core",
-    "crispy_forms",
+    'blog.apps.BlogConfig',
+    'users.apps.UsersConfig',
+    'portfolio.apps.PortfolioConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_cleanup',
+    'crispy_forms',
+    'ckeditor',
+    'ckeditor_uploader',
+    'captcha'
 ]
 
 MIDDLEWARE = [
@@ -86,14 +94,44 @@ WSGI_APPLICATION = 'gyser.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
 
+if not DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get("POSTGRES_DB", "postgres"),
+            'USER': os.environ.get("POSTGRES_USER", "postgres"),
+            'PASSWORD': os.environ.get("POSTGRES_PASSWORD", "postgres"),
+            'HOST': os.environ.get("DB_HOST", "db"),  #SERVIDOR BBDD
+            'PORT': int(os.environ.get("POSTGRES_PORT", 5432))
+        }
+    }
+
+    # PRODUCTION CONFIG
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SECURE = True
+    SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+    SECURE_SSL_REDIRECT = True
+    # https://stackoverflow.com/questions/8153875/how-to-deploy-an-https-only-site-with-django-nginx
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+    CSRF_COOKIE_SAMESITE = "Strict"
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = "DENY"
+
+    # Si se establece menos de 15768000 - error
+    SECURE_HSTS_SECONDS = 300 #300 # set low, but when site is ready for deployment, set to at least 15768000 (6 months)
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -130,24 +168,63 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
+'''
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = "/media/"
+'''
+STATIC_URL = '/static/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/static') # "/code/static/static/"
+
+MEDIA_URL = "/static/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media') # "/code/static/media/"
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-#LOGIN_REDIRECT_URL = "blog-home"
-#LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "users-profile" # necesario para login de usuario
+LOGIN_URL = "users-login"
 
 # EMAIL_SSL_CERTFILE EMAIL_SUBJECT_PREFIX EMAIL_USE_SSL
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "gyser.django@gmail.com " #os.environ.get(EMAIL_USER)
-EMAIL_HOST_PASSWORD = "Hel@d0CacAhuEte!" #os.environ.get(EMAIL_PASSWORD)
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "gyser.django@gmail.com") #os.environ.get(EMAIL_USER)
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "xhsefzlidiedacea") #os.environ.get(EMAIL_PASSWORD)
 
 
-GOOGLE_RECAPTCHA_SECRET_KEY = '6LdP3roZAAAAAKF-AnJ5QUKugJs2jA1XpnkD6GU9'
+GOOGLE_RECAPTCHA_SECRET_KEY = os.environ.get("GOOGLE_RECAPTCHA_SECRET_KEY", "6LdP3roZAAAAAKF-AnJ5QUKugJs2jA1XpnkD6GU9")
+RECAPTCHA_PRIVATE_KEY = GOOGLE_RECAPTCHA_SECRET_KEY
+RECAPTCHA_PUBLIC_KEY = "6LdP3roZAAAAAPfQ2Hhs5h24mwxdz2qXRT6brg6q"
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    'awesome_ckeditor': {
+        'toolbar': 'full',
+        'extraPlugins': ','.join(
+            [
+                'codesnippet',
+            ]),
+    },
+    'custom_one':{
+        'toolbar': 'Custom',
+        #'height': 500,
+        #'width': "200%",
+        'toolbarCanCollapse': False,
+        'toolbar_Custom': [
+            ['Styles', 'Bold', 'Underline', 'Link', 'Image', 'CodeSnippet', 'Source', 'Youtube'],
+        ],
+        'extraPlugins': ','.join(['codesnippet', 'youtube'])
+    },
+    'custom_two':{
+        'toolbar': 'Custom',
+        #'height': 500,
+        #'width': "200%",
+        'toolbarCanCollapse': False,
+        'toolbar_Custom': [
+            ['Styles', 'Bold', 'Underline', 'Link', 'Image', 'CodeSnippet'],
+        ],
+        'extraPlugins': ','.join(['codesnippet'])
+    }
+}

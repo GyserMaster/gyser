@@ -1,0 +1,369 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <title>Gyser.es</title>
+  <link rel="stylesheet" href="{% static 'portfolio/js/bootstrap45/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/gyser.css' %}" />
+  <link rel="icon" type="image/x-icon" href="#" />
+</head>
+
+<body>
+  <div id="container" class="container p-0">
+    <!-- ======= Navbar Menu Section ======= -->
+    <nav class="col-sm-12 sticky-top navbar navbar-expand-lg navbar-dark bg-dark ">
+
+      <a class="navbar-brand" href="#">gyser.es | Portfolio</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li>        
+            <a class="nav-link" href="#inicio">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">Sobre mi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Servicios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contacto</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'blog-home' %}">Blog</a>
+          </li>
+        </ul>
+
+      </div>
+
+    </nav>
+    
+    <main>
+      <!-- ======= About Section ======= -->
+      <section id="about" class="row m-0">
+
+        <div id="about-me" class="col-md-6 row m-0">
+
+          <figure class="col-12">
+            <img id="gyser-foto" src="{% static 'portfolio/img/gyser_cv.jpg' %}"/>
+            <p>Nombre: Sergey Petrov</p>
+            <p>Perfil: programador junior, técnico informático</p>
+          </figure>
+
+          <div class="col-12">
+             
+              <h3>Stack tecnológico actual</h3>
+              
+              <div class="mt-2">
+                <img class="float-left mr-2" src="{% static 'portfolio/img/icon-python.png' %}" width=40px height=40px>
+                <span>PYTHON</span>
+                <div class="progress">
+                  <div class="progress-bar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-2">
+                <img class="float-left mr-2" src="{% static 'portfolio/img/icon-django.png' %}" width=40px height=40px>
+                <span>DJANGO / REST Framework</span>
+                <div class="progress">
+                  <div class="progress-bar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mt-2">
+                <img class="float-left mr-2" src="{% static 'portfolio/img/icon-docker.png' %}" width=40px height=40px>
+                <span>DOCKER</span>            
+                <div class="progress">
+                  <div class="progress-bar" style="width: 80%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-2">
+                <img class="float-left mr-2" src="{% static 'portfolio/img/icon-js.png' %}" width=40px height=40px>
+                <span>JAVASCRIPT / TYPESCRIPT / VUE.js</span>
+                <div class="progress">
+                  <div class="progress-bar" style="width: 75%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-2">
+                <img class="float-left mr-2" src="{% static 'portfolio/img/icon-postgres.png' %}" width=40px height=40px>
+                <span>SQL [Postgres]</span>
+                <div class="progress">
+                  <div class="progress-bar" style="width: 68%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-2">
+                <img class="float-left mr-2" src="{% static 'portfolio/img/icon-bootstrap.png' %}" width=40px height=40px>
+                <span>HTML / CSS / BOOTSTRAP / JQUERY</span>
+                <div class="progress">
+                  <div class="progress-bar" style="width: 60%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+              </div>
+          </div>
+          
+
+        </div>
+
+        <div id="about-desc" class="col-md-6">
+          <h3>Sobre mi</h3>
+          <p class="lead">
+            Soy amante del hardware, llevo arreglando notebooks y montando PC's desde los 16 años.
+            Empezó como un simple hobby, que me recuerda a los legos que tenía de niño manteniendo
+            esa curiosidad de encajar distintas piezas, que a día de hoy lo extrapolo al código.
+          </p>
+          <p class="lead">
+            Estudié en el instituto IES Los Manantiales, donde desarrolle mis habilidades de programar con lenguajes
+            como
+            <b>Java, PHP, Javascript, Python</b>. Por parte de la maquetación aprendí <b>HTML y CSS</b>. También cuento
+            con la experiencia de implementar
+            sistemas windows/linux del lado servidor y despliegue de redes.
+            Cuento con un certificado <b>ITE1 y CCNA R&S1 de CISCO</b> teniendo instructores del mismo centro educativo.
+          </p>
+          <p class="lead">
+            Actualmente estoy desarrollando mis habilidades en Python, enfocandome en el framework <b>Django</b>,
+            realizando
+            despliegues desde <b>AWS</b> utilizando sus servicios de Cloud computing (VPS) tales como <b>EC2 y Route
+              53</b>.
+          </p>
+        </div>
+
+        <hr>
+
+
+        <div id="about-others" class="col-md-12">
+          <h3>Otros lenguajes/tecnologías con los que he trabajado.</h3>
+          <ul>
+            <li>
+              <img src="{% static 'portfolio/img/icon-php.png' %}">
+              PHP
+            </li>
+            <li>
+              <img src="{% static 'portfolio/img/icon-java.png' %}">
+              Java
+            </li>
+            <li>
+              <img src="{% static 'portfolio/img/icon-eclipse.png' %}">
+              Eclipse
+            </li>
+            <li>
+              <img src="{% static 'portfolio/img/icon-pycharm.png' %}">
+              PyCharm
+            </li>
+            <li>
+              <img src="{% static 'portfolio/img/icon-flask.png' %}" >
+              Flask
+            </li>
+            <li>
+              <img src="{% static 'portfolio/img/icon-python.png' %}">
+              Tkinter [GUI]
+            </li>
+            <li>
+              <img src="{% static 'portfolio/img/icon-sqlalchemy.png' %}">
+              SQLAlchemy
+            </li>
+            <li>
+              <img src="{% static 'portfolio/img/icon-mysql.png' %}">
+              MySQL
+            </li>            
+            <li>
+              <img src="{% static 'portfolio/img/icon-grafana.png' %}">
+              Grafana
+            </li>
+            <li>
+              <img src="{% static 'portfolio/img/icon-csharp.png' %}">
+              C#
+            </li>
+            <li>
+              <img src="{% static 'portfolio/img/icon-unity.png' %}">
+              Unity
+            </li>
+
+
+          </ul>
+        </div>
+
+      </section>
+      <!-- ======= Services Section ======= -->
+      <section id="services" class="bg-info">
+        
+        <div class="card text-center">
+          <div class="card-header">
+            <ul id="services-nav" class="nav nav-tabs card-header-tabs">
+              <li class="nav-item">
+                <a id="services-nav-it" class="nav-link active" href="#services-it">Servicio técnico</a>
+              </li>
+              <li class="nav-item">
+                <a id="services-nav-webdev" class="nav-link" href="#services-webdev">Desarrollo Web</a>
+              </li>
+              <li class="nav-item">
+                <a id="services-nav-projects" class="nav-link" href="#services-projects">Proyectos</a>
+              </li>
+            </ul>
+          </div>
+          <!-- ==== Services-IT ==== -->
+          <div id="services-it" class="title-box">
+            <p class="subtitle-a">
+                Se cubren las necesidades de montaje, reparación, software, presupuestos, limpieza, instalaciones de equipo informático a medida,
+                asistiendo para PYMES como particulares, para oficina y Gaming.
+            </p>
+            <table class="display-table">
+                <tbody>
+                    <tr>
+                        <th class="table-cell">Tabla de precios</th><td class="table-cell">Limpieza, montaje, reparación</td>
+                    </tr>
+                    <tr>
+                        <td class="table-cell">PC/Sobremesa</td><td class="table-cell">30€</td>
+                    </tr>
+                    <tr>
+                        <td class="table-cell">Portatiles/Notebooks</td><td class="table-cell">40€</td>
+                    </tr>
+                </tbody>
+            </table>
+            <tfoot>
+              <p>
+                * +5€ por copias de seguridad o movilidad
+              </p>
+                <p>
+                    * Para otro tipo de trabajos como instalaciones de cableado o infraestructuras de equipos contacte conmigo y 
+                    pida presupuesto sin compromiso.
+                </p>
+            </tfoot>
+          </div>
+
+          <!-- ==== Services-WEBDEV ==== -->
+          <div id="services-webdev" class="title-box text-center">
+            <p class="subtitle-a">
+              Si necesita una página web o aplicación contacte conmigo para saber que necesidades necesita cubrir, presupuestos
+              sin compromiso.
+            </p>
+            <div class="line-mf"></div>
+          </div>          
+
+          <!-- ==== Services-PROJECTS ==== -->
+          <div id="services-projects" class="title-box text-center">
+            <p class="subtitle-a">
+              Proyectos en curso, GitHub, puede consultar <a href="{% url 'blog-home' %}">mi blog</a> para ver mis guias y
+              tutoriales.
+            </p>
+            <div class="line-mf"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======= Contact Section ======= -->
+    <section id="contact">
+      <h4 class="title-left pl-2 pt-2">
+        Contacta conmigo
+      </h4>
+      
+      <div class="container">
+        <div class="row col-sm-12">
+          <div class="col-md-6 mb-3">
+              <a href="#contact"> </a>
+              <form action="{% url 'portfolio' %}#contact" method="POST" role="form" > 
+              {% csrf_token %}
+                <div class="col-md-12 text-center mb-3">
+                  {% if messages %}
+                      {% for msg in messages %}
+                          <div class="alert {{ msg.tags }}">
+                              {{ msg }}
+                          </div>
+                      {% endfor %}
+                  {% endif %}                            
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      {{form.name|as_crispy_field}}
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      {{form.email|as_crispy_field}}
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      {{form.subject|as_crispy_field}}
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      {{form.message|as_crispy_field}}
+                    </div>
+                  </div>  
+                                
+                  <div class="col-md-12 mb-3">                            
+                    <div class="g-recaptcha" data-sitekey="6LdP3roZAAAAAPfQ2Hhs5h24mwxdz2qXRT6brg6q"></div>
+                  </div>
+                  
+
+                  <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-dark w-50 h-100">Enviar Mensaje</button>
+                  </div>
+
+                </div>
+              </form>
+
+            
+          </div>
+
+          <div class="col-md-6 pb-3">
+              <p class="lead">                
+                Para contactar mandame un mensaje a través del formulario y me pondre en contacto contigo en la mayor brevedad posible.
+                Todos los presupuestos sin compromiso.
+              </p>
+              <ul>
+                <li>Actualmente mi disponibilidad geográfica es Málaga - CP 29630</li>                        
+              </ul>
+              <p class="lead">                
+                Puedes seguirme en Linkedin, Telegram y GitHub.
+              </p>
+              <ul id="social-links">
+                <li><a href="https://www.linkedin.com/in/petrov-sergey/"><img src="{% static 'portfolio/img/contact-linkedin.png' %}" class="img-fluid rounded b-shadow-a" alt="" width=50% height=50%></a></li>
+                <li><a href="https://t.me/Gyser"><img src="{% static 'portfolio/img/contact-telegram.png' %}" class="img-fluid rounded b-shadow-a" alt="" width=50% height=50%></a></li>
+                <li><a href="https://github.com/GyserMaster"><img src="{% static 'portfolio/img/contact-github.png' %}" class="img-fluid rounded b-shadow-a" alt="" width=50% height=50%></a></li>
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </section><!-- End Contact Section -->
+
+    
+    </main>
+    <!-- ======= Footer Section ======= -->
+    <footer class="col-12 bg-warning text-center">
+      Sergey Petrov &copy; <a href="https://gyser.es">gyser.es</a> 
+    </footer>
+
+  </div>
+
+  <!-- ======= Script Section ======= {% static 'portfolio/js/bootstrap45/css/bootstrap.min.css' %}-->
+  <script type="text/javascript" src="{% static 'portfolio/js/main.js' %}"></script>
+  <script type="text/javascript" src="{% static 'portfolio/js/bootstrap45/jquery-3.5.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'portfolio/js/bootstrap45/js/bootstrap.min.js' %}"></script>
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+</body>
+
+</html>
